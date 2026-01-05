@@ -9,7 +9,7 @@ test.describe("라우팅 테스트", () => {
     // 가려져 있든, 아직 로딩 중이든 상관없이 강제로 눌러버리는 옵션입니다.
     await page.getByRole('link', { name: "충전소 검색" }).click({ force: true });
     // 새로운 URL이 '/station'인지 확인
-    await expect(page).toHaveURL("http://localhost:3000/station", { timeout: 10000 });
+    await expect(page).toHaveURL("http://localhost:3000/station_error", { timeout: 100 });
   });
 
   test("즐겨찾기 페이지 이동", async ({ page }) => {
@@ -20,6 +20,6 @@ test.describe("라우팅 테스트", () => {
     // 가려져 있든, 아직 로딩 중이든 상관없이 강제로 눌러버리는 옵션입니다.
     await page.getByRole('link', { name: "즐겨찾기" }).click({ force: true });
     // 새로운 URL이 '/favorite'인지 확인
-    await expect(page).toHaveURL("http://localhost:3000/favorite", { timeout: 10000 });
+    await expect(page).toHaveURL("http://localhost:3000/favorite_error", { timeout: 100 });
   });
 });
