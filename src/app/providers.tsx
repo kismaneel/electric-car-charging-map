@@ -28,8 +28,6 @@ function getQueryClient() {
     }
 }
 
-const queryClient = new QueryClient();
-
 export function Providers({ children }: { children: React.ReactNode }) {
     const queryClient = getQueryClient();
     
