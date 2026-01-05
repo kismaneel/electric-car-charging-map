@@ -24,18 +24,18 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
 
-    - name: Build the Next.js project
-      run: npm run build  # Next.js 애플리케이션을 빌드
+    # - name: Build the Next.js project
+    #   run: npm run build  # Next.js 애플리케이션을 빌드
 
-    - name: Start Next.js server
-      run: npm start &  # 백그라운드에서 서버 시작
-      env:
-        HOST: '0.0.0.0'  # 호스트 설정 (필요시)
-        PORT: 3000  # 기본 포트는 3000으로 설정
-      continue-on-error: false
+    # - name: Start Next.js server
+    #   run: npm start &  # 백그라운드에서 서버 시작
+    #   env:
+    #     HOST: '0.0.0.0'  # 호스트 설정 (필요시)
+    #     PORT: 3000  # 기본 포트는 3000으로 설정
+    #   continue-on-error: false
 
-    - name: Wait for Next.js to be ready
-      run: npx wait-on http://localhost:3000  # 서버가 실행되었는지 기다림
+    # - name: Wait for Next.js to be ready
+    #   run: npx wait-on http://localhost:3000  # 서버가 실행되었는지 기다림
 
     - name: Run Playwright tests
       run: npx playwright test
