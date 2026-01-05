@@ -38,9 +38,9 @@ const 즐겨찾기리스트컴포넌트 = () => {
           return <StationCard 
             key={station.cpId} 
             {...station}
-            getLocation={station.getLocation} 
-            isAvailable={station.isAvailable}
-            isFastCharger={station.isFastCharger}
+            // getLocation={station.getLocation} 
+            // isAvailable={station.isAvailable}
+            // isFastCharger={station.isFastCharger}
             />
         })}
       </div>
