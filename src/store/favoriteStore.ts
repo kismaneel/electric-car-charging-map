@@ -1,4 +1,4 @@
-import { Station, StationDTO } from "@/api/ev/types";
+import { StationDTO } from "@/api/ev/types";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
@@ -18,7 +18,7 @@ const initialState: State = {
 
 export const useFavoriteStore = create<State & Actions>()(
     persist(
-        (set, get) => ({
+        (set) => ({
             ...initialState,
             addFavorite: (station: StationDTO) => {
                 set((state) => ({
