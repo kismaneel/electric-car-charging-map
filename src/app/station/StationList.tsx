@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/table";    
 import kepcoAPI from "../../api/ev/kepcoAPI";
 import { useSuspenseQuery } from "@tanstack/react-query";
+import { Station } from "@/api/ev/types";
 
 const StationList = ({ address, 충전가능여부, 급속여부 }: { address: string; 충전가능여부: string; 급속여부: string }) => {
     const { data } = useSuspenseQuery({
@@ -17,13 +18,13 @@ const StationList = ({ address, 충전가능여부, 급속여부 }: { address: s
         queryFn: () => kepcoAPI.getEvSearchList({ page: 1, perPage: 5, addr: address }),
     });
 
-    const filteredData = data?.filter((station) => {
-        console.log('충전가능여부:', 충전가능여부, '급속여부:', 급속여부);
-        const matchCharge = 충전가능여부 ? station.isAvailable() === (충전가능여부 === "1") : true;
-        const matchSpeed = 급속여부 ? station.isFastCharger() === (급속여부 === "2") : true;
+    // const filteredData = data?.filter((station) => {
+    //     console.log('충전가능여부:', 충전가능여부, '급속여부:', 급속여부);
+    //     const matchCharge = 충전가능여부 ? station.isAvailable() === (충전가능여부 === "1") : true;
+    //     const matchSpeed = 급속여부 ? station.isFastCharger() === (급속여부 === "2") : true;
 
-        return matchCharge && matchSpeed;
-    });
+    //     return matchCharge && matchSpeed;
+    // });
 
 
     return (
@@ -40,7 +41,7 @@ const StationList = ({ address, 충전가능여부, 급속여부 }: { address: s
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {data?.map((station: any, index: number) => {
+                    {data?.map((station: Station, index: number) => {
                         // 1. 여기서 각 station에 대해 필터 조건을 검사합니다.
                         const matchCharge = 충전가능여부 ? station.isAvailable() === (충전가능여부 === "1") : true;
                         const matchSpeed = 급속여부 ? station.isFastCharger() === (급속여부 === "2") : true;
