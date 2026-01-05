@@ -1,21 +1,5 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { clsx, type ClassValue }  from "clsx";
-import { twMerge } from "tailwind-merge";
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
-
-// export const Button = ({ isActive }: { isActive: boolean }) => {
-//   return (
-//     <button
-//       className={cn("btn", "p-4", isActive ? "p-2 bg-blue-500" : "bg-gray-500")}
-//     >
-//       버튼
-//     </button>
-//   );
-// };
 
 export default function Home() {
   return (
