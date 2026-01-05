@@ -1,14 +1,14 @@
-import { Station } from "@/api/ev/types";
+import { Station, StationDTO } from "@/api/ev/types";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
 type State = {
-    favorites: Station[];
+    favorites: StationDTO[];
 };
 
 type Actions = {
-    addFavorite: (station: Station) => void;
-    removeFavorite: (stationId: Station) => void;
+    addFavorite: (station: StationDTO) => void;
+    removeFavorite: (stationId: StationDTO) => void;
     resetFavorites: () => void;
 };
 
@@ -20,12 +20,12 @@ export const useFavoriteStore = create<State & Actions>()(
     persist(
         (set, get) => ({
             ...initialState,
-            addFavorite: (station: Station) => {
+            addFavorite: (station: StationDTO) => {
                 set((state) => ({
                     favorites: [...state.favorites, station],
                 }));
             },
-            removeFavorite: (station: Station) => {
+            removeFavorite: (station: StationDTO) => {
                 set((state) => ({
                     favorites: state.favorites.filter((fav) => fav.cpId !== station.cpId),
                 }));

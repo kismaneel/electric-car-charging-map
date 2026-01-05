@@ -1,4 +1,4 @@
-import { Station } from "@/api/ev/types";
+import { StationDTO } from "@/api/ev/types";
 import useFavoriteStore from "@/store/favoriteStore";
 import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 import { Button } from "@/components/ui/button";
@@ -10,7 +10,7 @@ import {
     CardTitle 
 } from "@/components/ui/card";
 
-export default function StationCard(props: Station) {
+export default function StationCard(props: StationDTO) {
     // 스토어에서 상태와 액션을 가져옵니다.
     const isFavorited = useFavoriteStore((state) => 
         state.favorites.some((fav) => fav.cpId === props.cpId)
